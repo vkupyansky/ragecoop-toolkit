@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony" Version="2.4.3" />
+    <Compile Include="../../Shared/EngineCodecGuard.cs" Link="EngineCodecGuard.cs" />
+    <Compile Include="../../Shared/EngineFragmentGuard.cs" Link="EngineFragmentGuard.cs" />
+    <Compile Include="../../Shared/EngineTransportGuard.cs" Link="EngineTransportGuard.cs" />
+    <Reference Include="RageCoop.Core"><HintPath>$(RageCoopServerDir)/RageCoop.Core.dll</HintPath><Private>true</Private></Reference>
+    <Reference Include="ScriptHookVDotNet3"><HintPath>$(RageCoopServerDir)/ScriptHookVDotNet3.dll</HintPath><Private>true</Private></Reference>
+    <Reference Include="Lidgren.Network"><HintPath>$(RageCoopClientDir)/Lidgren.Network.dll</HintPath><Private>true</Private></Reference>
+  </ItemGroup>
+</Project>

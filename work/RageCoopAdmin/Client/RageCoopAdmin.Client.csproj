@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <AssemblyName>RageCoopAdmin.Client</AssemblyName>
+    <PublicRelease Condition="'$(PublicRelease)' == ''">false</PublicRelease>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(PublicRelease)' == 'true'">
+    <Compile Remove="Speedometer.cs;SpeedometerAssets.cs;SpeedometerInitialization.cs;SpeedometerTextureCache.cs" />
+    <EmbeddedResource Include="Assets/PublicVehicleCatalog.json" LogicalName="RageCoopAdmin.Client.AddonVehicles.json" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(PublicRelease)' == 'false'">
+    <EmbeddedResource Include="../../VehicleModels/catalog.json" LogicalName="RageCoopAdmin.Client.AddonVehicles.json" />
+    <RequiredSpeedometerAsset Include="Assets/Speedometer/base.png;Assets/Speedometer/needle.png;Assets/Speedometer/unit.png;Assets/Speedometer/digit-0.png;Assets/Speedometer/digit-1.png;Assets/Speedometer/digit-2.png;Assets/Speedometer/digit-3.png;Assets/Speedometer/digit-4.png;Assets/Speedometer/digit-5.png;Assets/Speedometer/digit-6.png;Assets/Speedometer/digit-7.png;Assets/Speedometer/digit-8.png;Assets/Speedometer/digit-9.png;Assets/Speedometer/gear-N.png;Assets/Speedometer/gear-R.png;Assets/Speedometer/gear-1.png;Assets/Speedometer/gear-2.png;Assets/Speedometer/gear-3.png;Assets/Speedometer/gear-4.png;Assets/Speedometer/gear-5.png;Assets/Speedometer/gear-6.png;Assets/Speedometer/gear-7.png;Assets/Speedometer/gear-8.png" />
+    <EmbeddedResource Include="@(RequiredSpeedometerAsset)" LogicalName="RageCoopAdmin.Client.Assets.Speedometer.%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../Shared/VehicleAppearance.cs" Link="Shared/VehicleAppearance.cs" />
+    <Compile Include="../Shared/WorldOptions.cs" Link="Shared/WorldOptions.cs" />
+    <Compile Include="../Shared/EngineTransportGuard.cs" Link="Shared/EngineTransportGuard.cs" />
+    <Compile Include="../Shared/EngineCodecGuard.cs" Link="Shared/EngineCodecGuard.cs" />
+    <Compile Include="../Shared/EngineFragmentGuard.cs" Link="Shared/EngineFragmentGuard.cs" />
+    <Compile Include="../Shared/EngineLoggerGuard.cs" Link="Shared/EngineLoggerGuard.cs" />
+    <Compile Include="../Shared/EngineWorkerGuard.cs" Link="Shared/EngineWorkerGuard.cs" />
+    <PackageReference Include="Lib.Harmony" Version="2.4.3" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="RageCoop.Client">
+      <HintPath>$(RageCoopClientDir)/RageCoop.Client.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>$(RageCoopClientDir)/Lidgren.Network.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="RageCoop.Core">
+      <HintPath>$(RageCoopServerDir)/RageCoop.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="ScriptHookVDotNet3">
+      <HintPath>$(RageCoopServerDir)/ScriptHookVDotNet3.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="LemonUI.SHVDN3">
+      <HintPath>$(LemonUiDll)</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <Target Name="ValidateBuildProfile" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(PublicRelease)' != 'true' And '$(PublicRelease)' != 'false'" Text="PublicRelease must be true or false." />
+    <Error Condition="'$(PublicRelease)' == 'false' And !Exists('../../VehicleModels/catalog.json')" Text="The private vehicle catalog is required for the private build. Use -p:PublicRelease=true for the public source package." />
+    <Error Condition="'$(PublicRelease)' == 'false' And !Exists('%(RequiredSpeedometerAsset.Identity)')" Text="The private speedometer asset %(RequiredSpeedometerAsset.Identity) is missing. Use -p:PublicRelease=true for the public source package." />
+  </Target>
+  <Target Name="ValidateRageCoopReferences" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(RageCoopServerDir)' == '' Or !Exists('$(RageCoopServerDir)/RageCoop.Core.dll') Or !Exists('$(RageCoopServerDir)/ScriptHookVDotNet3.dll')" Text="Set RageCoopServerDir in References.props to the compatible RageCoop server directory." />
+    <Error Condition="'$(RageCoopClientDir)' == '' Or !Exists('$(RageCoopClientDir)/RageCoop.Client.dll')" Text="Set RageCoopClientDir in References.props to the compatible installed client directory." />
+    <Error Condition="'$(LemonUiDll)' == '' Or !Exists('$(LemonUiDll)')" Text="Set LemonUiDll in References.props to the compatible LemonUI.SHVDN3.dll file." />
+  </Target>
+</Project>

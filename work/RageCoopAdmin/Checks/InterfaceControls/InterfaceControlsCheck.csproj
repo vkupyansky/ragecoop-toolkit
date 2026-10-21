@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="System.Windows.Forms" />
+    <Compile Include="Program.cs" />
+    <Compile Include="../../Client/StorageFileLock.cs" Link="StorageFileLock.cs" />
+    <Compile Include="../../Client/InterfaceSettingsStore.cs" Link="InterfaceSettingsStore.cs" />
+    <Compile Include="../../Client/ShortcutLatch.cs" Link="ShortcutLatch.cs" />
+    <Compile Include="../../Client/KeyboardVehicleBoost.cs" Link="KeyboardVehicleBoost.cs" />
+    <Compile Include="../../Client/WorldTimeSelection.cs" Link="WorldTimeSelection.cs" />
+  </ItemGroup>
+</Project>

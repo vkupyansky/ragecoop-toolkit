@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48" Version="1.0.3" PrivateAssets="all" />
+    <Compile Include="Program.cs" />
+    <Compile Include="../../Client/RepairSync.cs" Link="RepairSync.cs" />
+    <Compile Include="../../Client/VehicleRepairCache.cs" Link="VehicleRepairCache.cs" />
+    <Compile Include="../../Client/RuntimeEntityLookup.cs" Link="RuntimeEntityLookup.cs" />
+    <Reference Include="RageCoop.Client"><HintPath>$(RageCoopClientDir)/RageCoop.Client.dll</HintPath><Private>true</Private></Reference>
+    <Reference Include="RageCoop.Core"><HintPath>$(RageCoopServerDir)/RageCoop.Core.dll</HintPath><Private>true</Private></Reference>
+    <Reference Include="ScriptHookVDotNet3"><HintPath>$(RageCoopServerDir)/ScriptHookVDotNet3.dll</HintPath><Private>true</Private></Reference>
+    <Reference Include="Lidgren.Network"><HintPath>$(RageCoopClientDir)/Lidgren.Network.dll</HintPath><Private>true</Private></Reference>
+  </ItemGroup>
+</Project>

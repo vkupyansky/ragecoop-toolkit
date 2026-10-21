@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- Match the installed host's metadata while running on its supported .NET 10 runtime. -->
+    <TargetFramework>net6.0</TargetFramework>
+    <RollForward>Major</RollForward>
+    <!-- Compatibility fixture: remove when the upstream host no longer targets .NET 6. -->
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RageCoop.Server"><HintPath>$(RageCoopServerDir)/RageCoop.Server.dll</HintPath><Private>true</Private></Reference>
+    <Reference Include="RageCoop.Core"><HintPath>$(RageCoopServerDir)/RageCoop.Core.dll</HintPath><Private>true</Private></Reference>
+    <Reference Include="ScriptHookVDotNet3"><HintPath>$(RageCoopServerDir)/ScriptHookVDotNet3.dll</HintPath><Private>true</Private></Reference>
+    <None Include="../../Server/bin/$(Configuration)/net10.0/CoopAdmin.dll" Link="Resources/CoopAdmin/CoopAdmin.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../Server/bin/$(Configuration)/net10.0/0Harmony.dll" Link="Bootstrap/0Harmony.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../Bootstrap/bin/$(Configuration)/net10.0/CoopAdmin.Startup.dll" Link="Bootstrap/CoopAdmin.Startup.dll" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="$(RageCoopServerDir)/RageCoop.Server.runtimeconfig.json" Link="Host/RageCoop.Server.runtimeconfig.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

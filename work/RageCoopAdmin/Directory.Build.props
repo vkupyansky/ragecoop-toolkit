@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup Condition="'$(PublicRelease)' == 'true'">
+    <DefineConstants>$(DefineConstants);PUBLIC_RELEASE</DefineConstants>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)References.props" Condition="Exists('$(MSBuildThisFileDirectory)References.props')" />
+</Project>

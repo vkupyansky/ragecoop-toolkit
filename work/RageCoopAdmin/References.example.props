@@ -1,0 +1,8 @@
+<Project>
+  <!-- Copy to References.props; set absolute paths to your installed matching dependencies. -->
+  <PropertyGroup>
+    <RageCoopClientDir>/absolute/path/to/GTA/scripts/RageCoop</RageCoopClientDir>
+    <RageCoopServerDir>/absolute/path/to/RageCoopServer</RageCoopServerDir>
+    <LemonUiDll>/absolute/path/to/LemonUI.SHVDN3.dll</LemonUiDll>
+  </PropertyGroup>
+</Project>

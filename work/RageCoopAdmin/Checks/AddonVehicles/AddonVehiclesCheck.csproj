@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <PublicRelease Condition="'$(PublicRelease)' == ''">false</PublicRelease>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="MenuBoundary.cs" />
+    <Compile Include="../../Client/AddonVehicleCatalog.cs" Link="AddonVehicleCatalog.cs" />
+    <Compile Include="../../Client/VehicleSearch.cs" Link="VehicleSearch.cs" />
+    <Compile Include="../../Client/AddonVehicleMenu.cs" Link="AddonVehicleMenu.cs" />
+    <Compile Include="../../Client/VehicleMenuPresentation.cs" Link="VehicleMenuPresentation.cs" />
+    <Compile Include="../../Client/VehicleFavoritesMenu.cs" Link="VehicleFavoritesMenu.cs" />
+    <Compile Include="../../Client/FavoriteVehicleStore.cs" Link="FavoriteVehicleStore.cs" />
+    <Compile Include="../../Client/StorageFileLock.cs" Link="StorageFileLock.cs" />
+    <EmbeddedResource Include="../../../VehicleModels/catalog.json" LogicalName="RageCoopAdmin.Client.AddonVehicles.json" Condition="'$(PublicRelease)' == 'false'" />
+    <EmbeddedResource Include="../../Client/Assets/PublicVehicleCatalog.json" LogicalName="RageCoopAdmin.Client.AddonVehicles.json" Condition="'$(PublicRelease)' == 'true'" />
+  </ItemGroup>
+  <Target Name="ValidateBuildProfile" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(PublicRelease)' != 'true' And '$(PublicRelease)' != 'false'" Text="PublicRelease must be true or false." />
+  </Target>
+</Project>
