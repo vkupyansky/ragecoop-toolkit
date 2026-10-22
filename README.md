@@ -20,7 +20,7 @@ An unofficial companion for [RageCoop](https://ragecoop.com/). Adds vehicle tool
 - Choose weapons, replenish ammo, and control health, armour and character abilities.
 - Use keyboard and gamepad controls; type Russian and English in searches and garage names.
 
-The public package contains **no vehicle model packs and no speedometer**. It does not replace normal traffic. English game-menu translation and a language switch are planned.
+English game-menu translation and a language switch are planned.
 
 ### Release status
 
@@ -28,7 +28,7 @@ The public package contains **no vehicle model packs and no speedometer**. It do
 
 ### Screenshots
 
-Real screenshots from our private two-player setup. Additional vehicle models and the speedometer are not included in the public package. The game menu is currently in Russian.
+Real screenshots from a two-player session. The game menu is currently in Russian.
 
 ![Shared free roam with a friend](screenshots/01-shared-play.png)
 
@@ -67,7 +67,7 @@ SHVDN requires .NET Framework 4.8 (already included in Windows 10/11) and the [M
 4. Extract `RageCoop-Toolkit-Addon.zip`. Copy the **contents** of `client` beside `GTA5.exe`, preserving its `scripts` folders. On VK Play, perform every step inside the virtual PC on its persistent game drive.
 5. Fully start GTA again → Story Mode → **F9** → the host's address. Press **J** for the toolkit.
 
-The host installs the server part below. RageCoop then downloads the menu automatically; vehicle models are never delivered by this addon.
+The host installs the server part below. RageCoop then downloads the menu automatically.
 
 **Hosting for friends**
 
@@ -99,18 +99,15 @@ In a text field, character and editing keys belong to that field. Player prefere
 - Radio station/on-off state is shared; exact song position and personal music files are not.
 - Private testing covered two players, not an eight-player load test. No measured FPS increase or guarantee of zero crashes is claimed.
 - Windows Esc and the remaining text-editing actions still need confirmation. A cold Win32 keyboard-layout check has failed and remains open, despite successful live input on Mac.
-- The screenshots above show the private two-player setup. Model packs and the speedometer are optional private additions and are not distributed here.
 - Later: English menu and language switch, further independent stability reviews, then separate decisions about missions and other additions.
 
 ### Additional cars
 
-Additional models are optional and installed separately by each player. They need matching files on all clients and a matching menu catalogue. The public build starts with an empty addon catalogue and does not include our private car pack. Model downloads and their authors' permissions remain separate from this project's MIT licence.
+Additional models are optional and installed separately by each player. They need matching files on all clients and a matching menu catalogue. Model downloads and their authors' permissions remain separate from this project's MIT licence.
 
 ### Source and contributions
 
 See [engine changes](ENGINE_CHANGES.md) for confirmed issues in the tested engine, their fixes and evidence limits. This is not a claim that every upstream release has those defects. Fixes are applied by the addon; it does not replace RageCoop with a new engine.
-
-Both editions use the same maintained code. The private edition is developed first; a public release is a selected snapshot with private assets and features excluded at build time.
 
 For a source build, extract both source and addon ZIPs. Install the SDK pinned in `work/RageCoopAdmin/global.json` (**10.0.402**). Copy `References.example.props` to `References.props` there: point `RageCoopClientDir` to the addon's `client/scripts/RageCoop`, `RageCoopServerDir` to `server`, and `LemonUiDll` to `lib/net48/LemonUI.SHVDN3.dll` from [LemonUI.SHVDN3 2.2.0](https://www.nuget.org/packages/LemonUI.SHVDN3/2.2.0). Build from `work/RageCoopAdmin`:
 
@@ -121,4 +118,4 @@ dotnet build Client/RageCoopAdmin.Client.csproj -c Release --no-restore -p:Publi
 
 Use the same locked restore/build commands for Server, Bootstrap and EarlyClient. From the source root, `bash tools/check.sh --public-release` runs the public builds and targeted checks on Windows/Git Bash or macOS/CrossOver with .NET Framework 4.8. It does not run the private full-audit suite or start GTA. Known limitations and failed checks must stay visible.
 
-Our code is [MIT](LICENSE). RageCoop and other dependencies retain their own licences and credits in [THIRD_PARTY.txt](THIRD_PARTY.txt). No GTA files, accounts, logs, car meshes or third-party HUD artwork are included; ScriptHookV is downloaded from its author separately.
+Our code is [MIT](LICENSE). RageCoop and other dependencies retain their own licences and credits in [THIRD_PARTY.txt](THIRD_PARTY.txt). ScriptHookV is downloaded from its author separately.

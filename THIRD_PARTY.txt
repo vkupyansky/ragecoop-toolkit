@@ -19,8 +19,6 @@ ScriptHookVDotNet3 and the embedded client host/API match the official
 3.7.0-nightly.188 distribution. Applicable notices from that exact distribution
 are reproduced in full below.
 
-No car models, GTA game files, Forza Styled Speedometer graphics, Steam Workshop
-images, ScriptHookV, dinput8.dll or .NET runtime are included in this baseline.
 ScriptHookV and the game belong to their respective owners and are obtained
 separately. No endorsement by any upstream author or publisher is implied.
 
@@ -29,8 +27,7 @@ separately. No endorsement by any upstream author or publisher is implied.
 Собственный код RageCoopToolkit распространяется по MIT. В комплекте есть
 сторонние библиотеки по MIT, Apache 2.0 и zlib; полные условия и авторство
 сохранены ниже. Лицензия нашего кода не заменяет эти условия. Состав и хеши
-совместимой основы перечислены в manifest.json. Модели машин, графика FSS,
-файлы игры, ScriptHookV и загрузчик ASI в этот набор не входят.
+совместимой основы перечислены в manifest.json.
 
 
 1. RageCoop

@@ -26,7 +26,7 @@ The source includes separate regression checks against the actual supported asse
 
 Russian-language menu; shared marker/weather/time; vehicle search, favourites and a garage; repair and passenger entry/teleport; vehicle appearance and radio/horn coordination; weapon and character tools; text input and lifecycle cleanup.
 
-Corrections to our own code are maintained as regression tests, rather than advertised as new engine features. The public build has neither the private HUD module nor the private vehicle catalogue.
+Corrections to our own code are maintained as regression tests, rather than advertised as new engine features.
 
 ## Open work
 
