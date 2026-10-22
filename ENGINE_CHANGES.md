@@ -20,16 +20,7 @@ These changes target the **tested 1.5.12.15 binary set**, identified in the rele
 | Settings and logs | Invalid settings could be overwritten; logger locked a replaceable string | Read-only validation/atomic initialisation and a stable logger monitor |
 | Client loading | Resource/native loading and global certificate bypass needed stricter boundaries | Early loading/path guards and removal of the certificate-accept-all assignment |
 
-The source includes separate regression checks against the actual supported assemblies. Tests isolate GTA natives and physical input; they are not proof of live vehicle physics, network performance or all gameplay. No numerical FPS/latency improvement is claimed without measurements.
+## Known issues
 
-## Our own additions
-
-Russian-language menu; shared marker/weather/time; vehicle search, favourites and a garage; repair and passenger entry/teleport; vehicle appearance and radio/horn coordination; weapon and character tools; text input and lifecycle cleanup.
-
-Corrections to our own code are maintained as regression tests, rather than advertised as new engine features.
-
-## Open work
-
-The full independent audit is paused at **0/3 consecutive clean passes**. One known Core issue remains: a reused full `VehicleSync` can retain its previous `DamageModel` when the next full snapshot has none. No claim is made that this issue is fixed. Cold keyboard-layout initialisation also needs further investigation.
-
-Before submitting an upstream fix, reproduce it on the maintainer's exact revision, provide the smallest test and keep each issue separate. Feature announcements belong in Show and tell, not in unrelated bug reports.
+- A fully repaired vehicle may retain an older damage state for another player.
+- Some keyboard layouts may have input issues.

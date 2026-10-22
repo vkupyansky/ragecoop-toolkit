@@ -10,8 +10,7 @@ revision has not been established. In the public client copy only, the unused
 System.Diagnostics.DiagnosticSource 4.3.0 embedded resource and its Costura
 metadata row have been removed. Every method body, assembly identity,
 reference, metadata heap and retained resource is preserved. This modified
-public client is not an unmodified upstream release. The private game install
-is not used as an output or changed by this preparation.
+client is not an unmodified upstream release.
 
 The server-only ScriptHookVDotNet reference assembly is a modified compatibility
 reference, not the original game host; it must remain in the server package.

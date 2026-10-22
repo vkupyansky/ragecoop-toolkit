@@ -6,7 +6,7 @@
 
 Work in progress · MIT · Game interface currently in Russian
 
-**[Download v0.1.0-wip](https://github.com/vkupyansky/ragecoop-toolkit/releases/tag/v0.1.0-wip)** · [Source code](https://github.com/vkupyansky/ragecoop-toolkit)
+**[Download v0.1.1-wip](https://github.com/vkupyansky/ragecoop-toolkit/releases/tag/v0.1.1-wip)** · [Source code](https://github.com/vkupyansky/ragecoop-toolkit)
 
 An unofficial companion for [RageCoop](https://ragecoop.com/). Adds vehicle tools, a personal garage, teleports and shared world settings, alongside targeted fixes for the supported RageCoop build. The underlying multiplayer engine is RageCoop.
 
@@ -21,10 +21,6 @@ An unofficial companion for [RageCoop](https://ragecoop.com/). Adds vehicle tool
 - Use keyboard and gamepad controls; type Russian and English in searches and garage names.
 
 English game-menu translation and a language switch are planned.
-
-### Release status
-
-**Work-in-progress release: v0.1.0-wip.** Clean source builds and server startup checks passed. The public menu was checked in GTA on Mac: vehicle search/spawning, repair, boost, garage, waypoint teleports, weather and time. Gamepad menu opening and typing «з» also worked. Shared play has been tested with two players in the private setup. A fresh installation of the complete public client on Windows has not been independently confirmed.
 
 ### Screenshots
 
@@ -93,13 +89,11 @@ After updating client files or the downloaded menu, fully restart GTA. F9 reconn
 
 In a text field, character and editing keys belong to that field. Player preferences, favourites and garage entries are saved locally for the server.
 
-### Limits and next steps
+### Limits
 
 - Free roam and shared tools; full co-op story progression and synchronised cutscenes are not implemented.
 - Radio station/on-off state is shared; exact song position and personal music files are not.
-- Private testing covered two players, not an eight-player load test. No measured FPS increase or guarantee of zero crashes is claimed.
-- Windows Esc and the remaining text-editing actions still need confirmation. A cold Win32 keyboard-layout check has failed and remains open, despite successful live input on Mac.
-- Later: English menu and language switch, further independent stability reviews, then separate decisions about missions and other additions.
+- Known vehicle-damage and keyboard-layout issues are listed in the [compatibility notes](ENGINE_CHANGES.md#known-issues).
 
 ### Additional cars
 
@@ -116,6 +110,6 @@ dotnet restore Client/RageCoopAdmin.Client.csproj --locked-mode -p:PublicRelease
 dotnet build Client/RageCoopAdmin.Client.csproj -c Release --no-restore -p:PublicRelease=true -warnaserror
 ```
 
-Use the same locked restore/build commands for Server, Bootstrap and EarlyClient. From the source root, `bash tools/check.sh --public-release` runs the public builds and targeted checks on Windows/Git Bash or macOS/CrossOver with .NET Framework 4.8. It does not run the private full-audit suite or start GTA. Known limitations and failed checks must stay visible.
+Use the same locked restore/build commands for Server, Bootstrap and EarlyClient. From the source root, `bash tools/check.sh --public-release` runs the public builds and targeted checks on Windows/Git Bash or macOS/CrossOver with .NET Framework 4.8.
 
 Our code is [MIT](LICENSE). RageCoop and other dependencies retain their own licences and credits in [THIRD_PARTY.txt](THIRD_PARTY.txt). ScriptHookV is downloaded from its author separately.
